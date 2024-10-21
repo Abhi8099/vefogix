@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/Login/Login.jsx", "src/app/login/login.jsx", "src/app/signup/page.jsx", "src/app/projects/page.jsx", "src/components/FormElements/Switchers/SwitcherOne.tsx", "src/helpers/SidebarProjectContext.tsx", "src/app/publisher-my-platform/page.tsx", "src/app/publisher-guestpost-tasks/page.jsx", "src/components/TaskView/index.jsx", "src/app/all-invoices/page.jsx", "src/app/invoice/page.jsx", "src/app/support-tickets/page.jsx", "src/components/ui/background-beams-with-collision.tsx", "src/components/metadata.jsx", "src/app/seo-tools/schema-generator/page.tsx"],
+  "exclude": ["node_modules"]
+}
