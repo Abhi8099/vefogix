@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import React, { useEffect } from "react";
 import Homie from "@/components/Home";
-// import HeaderComp from "@/components/HeaderComp";
+import HeaderComp from "@/components/HeaderComp";
 import Page from "@/components/Contactus";
 import { FooterFour } from "@/components/Footer";
 // import { usePathname } from 'next/navigation';
@@ -23,15 +23,6 @@ import Head from "next/head";
 import NumbersCard from "@/components/NumbersCard";
 import Script from "next/script";
 import { fetchMeta } from "./action";
-import dynamic from "next/dynamic";
-import Loader from "@/components/common/Loader";
-
-
-const HeaderComp = dynamic(() => import('@/components/HeaderComp'), {
-  ssr: false, 
-  loading: () => <Loader/>
-});
-
 
 
 

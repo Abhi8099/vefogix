@@ -13,19 +13,14 @@ import { Navbar } from "@nextui-org/react";
 import Link from "next/link";
 
 export default function Page() {
- const [isClient, setIsClient] = useState(false)
-  const [publisher, setPublisher] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-    Aos.init({})
-    const isPublisher = localStorage.getItem("isPublisher") === "true"
-    setPublisher(isPublisher)
-  }, [])
+    useEffect(() => {
+        Aos.init({});
+    }, []);
 
     const token = Cookies.get('login_access_token');
     const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
+    const publisher = localStorage.getItem("isPublisher") === "true";
 
     const menuItems = [
         { page: "Home", link: "home",href:"/" },
@@ -45,7 +40,7 @@ export default function Page() {
                 
                 { page: "Dummy Content Checker", link: "/seo-tools/dummy-content-checker"},
             ],
-            href:"/seo-tools"
+            href:"/"
         },
         { page: "Blogs", link: "blogs",href:"/blogs" },
         { page: "Press Release",href:"/press-release", link: "press-release" },
@@ -57,7 +52,7 @@ export default function Page() {
             <nav className="sticky top-7 z-50 bg-white shadow-lg  px-4 py-3 md:px-8 md:py-4  rounded-2xl  xl:mx-50 ">
                 <div className="container mx-auto flex items-center justify-between">
                     <div className="flex items-center ">
-                        <Link href="/">
+                        <a href="/">
                             <Image
                                 src="/images/new/Group 1000003985.svg"
                                 height={1}
@@ -66,7 +61,7 @@ export default function Page() {
                                 className="object-contain min-w-[104.67px] h-[40px] -mb-2"
                                 unoptimized
                             />
-                        </Link>
+                        </a>
                     </div>
 
                     <div className="hidden lg:flex lg:space-x-6">
@@ -109,13 +104,13 @@ export default function Page() {
                     <div className="hidden lg:flex items-center space-x-4">
                         {!token ? (
                             <>
-                                <Link href="/signin" className="btn-nav">Sign In</Link>
-                                <Link href="/signup" className="btn-nav">Sign Up</Link>
+                                <a href="/signin" className="btn-nav">Sign In</a>
+                                <a href="/signup" className="btn-nav">Sign Up</a>
                             </>
                         ) : (
-<Link href={publisher ? "/publisher-dashboard/" : "/buyer-dashboard/"} className="btn-nav">
+<a href={publisher ? "/publisher-dashboard/" : "/buyer-dashboard/"} className="btn-nav">
     Dashboard
-</Link>
+</a>
                         )}
                     </div>
 
@@ -167,27 +162,27 @@ export default function Page() {
             ))}
             
             {/* Other Links */}
-            <Link href="/press-release" className="text-gray-700 py-4 w-full shadow items-center mb-2 justify-center flex rounded-lg">
+            <a href="/press-release" className="text-gray-700 py-4 w-full shadow items-center mb-2 justify-center flex rounded-lg">
                 Press Release
-            </Link>
-            <Link href="tel:+91-8949272273" className="text-gray-700 py-4 w-full shadow items-center mb-2 justify-center flex rounded-lg">
+            </a>
+            <a href="tel:+91-8949272273" className="text-gray-700 py-4 w-full shadow items-center mb-2 justify-center flex rounded-lg">
                 <span className="mr-2">📞</span>+91-8949272273
-            </Link>
-            <Link href="mailto:support@Vefogix.com" className="text-gray-700 py-4 w-full shadow items-center mb-2 justify-center flex rounded-lg">
+            </a>
+            <a href="mailto:support@Vefogix.com" className="text-gray-700 py-4 w-full shadow items-center mb-2 justify-center flex rounded-lg">
                 <span className="mr-2">📧</span>support@Vefogix.com
-            </Link>
+            </a>
 
             {/* Authentication Links */}
             <div className="flex items-center space-x-4 my-4">
                 {!token ? (
                     <>
-                        <Link href="/signin" className="btn-nav">Sign In</Link>
-                        <Link href="/signup" className="btn-nav">Sign Up</Link>
+                        <a href="/signin" className="btn-nav">Sign In</a>
+                        <a href="/signup" className="btn-nav">Sign Up</a>
                     </>
                 ) : (
-                    <Link href={publisher ? "/publisher-dashboard" : "/buyer-dashboard"} className="btn-nav">
+                    <a href={publisher ? "/publisher-dashboard" : "/buyer-dashboard"} className="btn-nav">
                         Dashboard
-                    </Link>
+                    </a>
                 )}
             </div>
         </div>

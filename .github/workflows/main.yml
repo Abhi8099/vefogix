@@ -30,7 +30,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH }}
-          passphrase: ${{ secrets.PASSPHRASE2 }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           source: "./*"
           target: ${{ secrets.SERVER_PATH }}
           debug: true
@@ -41,7 +41,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_SSH }}
-          passphrase: ${{ secrets.PASSPHRASE2 }}
+          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd ${{ secrets.SERVER_PATH }}
             pm2 restart all
