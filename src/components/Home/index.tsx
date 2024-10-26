@@ -601,7 +601,13 @@ const [tableDataCount, setTableCount] = useState()
 
                             <div className=' flex flex-col gap-2'>
                                 <span>Language</span>
-                                <Select placeholder="Language"
+                                <Select 
+                                                                                showSearch
+                                                                                optionFilterProp="children" // Filters options based on their text
+                                                                                filterOption={(input, option) =>
+                                                                                    (option?.children as unknown as string).toLowerCase().includes(input.toLowerCase())
+                                                                                }
+                                placeholder="Language"
                                     onChange={(value) => handleFilterChange('language', value)}
                                     value={filters.language}
                                     className="w-full">
@@ -617,7 +623,13 @@ const [tableDataCount, setTableCount] = useState()
                                 <Select placeholder="Link Type"
                                     onChange={(value) => handleFilterChange('linkType', value)}
                                     value={filters.linkType}
-                                    className="w-full">
+                                    className="w-full"
+                                    showSearch
+                                    optionFilterProp="children" // Filters options based on their text
+                                    filterOption={(input, option) =>
+                                        (option?.children as unknown as string).toLowerCase().includes(input.toLowerCase())
+                                    }
+                                    >
                                     <Option value="">All</Option>
                                     {selected_LinkType.map((linkType: any) => (
                                         <Option key={linkType.uid} value={linkType.uid}>{linkType.title}</Option>

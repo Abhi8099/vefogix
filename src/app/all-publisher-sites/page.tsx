@@ -751,10 +751,17 @@ export default function Publishers() {
 
                                         <div className=' flex flex-col gap-2'>
                                             <span>Language</span>
-                                            <Select placeholder="Language"
+                                            <Select 
+                                                showSearch
+                                                placeholder="Language"
                                                 onChange={(value) => handleFilterChange('language', value)}
                                                 value={filters.language}
-                                                className="w-full">
+                                                className="w-full"
+                                                optionFilterProp="children" // Filters options based on their text
+                                                filterOption={(input, option) =>
+                                                    (option?.children as unknown as string).toLowerCase().includes(input.toLowerCase())
+                                                }>
+                                                    
                                                 <Option value="">All</Option>
                                                 {langs.map((lang: any) => (
                                                     <Option key={lang.uid} value={lang.uid}>{lang.title}</Option>
@@ -764,10 +771,16 @@ export default function Publishers() {
 
                                         <div className=' flex flex-col gap-2'>
                                             <span>Link Type</span>
-                                            <Select placeholder="Link Type"
+                                            <Select 
+                                                showSearch
+                                                placeholder="Link Type"
                                                 onChange={(value) => handleFilterChange('linkType', value)}
                                                 value={filters.linkType}
-                                                className="w-full">
+                                                className="w-full"
+                                                optionFilterProp="children" // Filters options based on their text
+                                                filterOption={(input, option) =>
+                                                    (option?.children as unknown as string).toLowerCase().includes(input.toLowerCase())
+                                                }>
                                                 <Option value="">All</Option>
                                                 {selected_LinkType.map((linkType: any) => (
                                                     <Option key={linkType.uid} value={linkType.uid}>{linkType.title}</Option>
@@ -777,10 +790,16 @@ export default function Publishers() {
 
                                         <div className=' flex flex-col gap-2'>
                                             <span>Countries</span>
-                                            <Select placeholder=""
+                                            <Select 
+                                                showSearch
+                                                placeholder=""
                                                 onChange={(value) => handleFilterChange('countries', value)}
                                                 value={filters.countries}
-                                                className="w-full">
+                                                className="w-full"
+                                                optionFilterProp="children" // Filters options based on their text
+                                                filterOption={(input, option) =>
+                                                    (option?.children as unknown as string).toLowerCase().includes(input.toLowerCase())
+                                                }>
                                                 <Option value="">All</Option>
                                                 {countries.map((country: any) => (
                                                     <Option key={country.id} value={country.id}>{country.name}</Option>

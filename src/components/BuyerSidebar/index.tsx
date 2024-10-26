@@ -27,7 +27,6 @@ import { BASE_URL } from "@/utils/api";
 import { TbTools } from "react-icons/tb";
 import { RiVerifiedBadgeLine } from "react-icons/ri";
 import { MdContentPasteSearch } from "react-icons/md";
-
 import { RiLogoutBoxLine, RiArrowDownSLine, RiToolsLine } from "react-icons/ri";
 import { VscFeedback } from "react-icons/vsc";
 import { IoPulseOutline } from "react-icons/io5";
@@ -35,15 +34,12 @@ import { SlRefresh } from "react-icons/sl";
 import { LuWholeWord } from "react-icons/lu";
 import { MdChecklistRtl } from "react-icons/md";
 import { MdNetworkCheck } from "react-icons/md";
-
 import { VscSymbolKeyword } from "react-icons/vsc";
 import { MdOutlineSchema } from "react-icons/md";
-
-
 import { TbReportAnalytics } from "react-icons/tb";
-
-
 import { motion, useAnimation } from 'framer-motion';
+import { PiShoppingCartSimpleBold } from "react-icons/pi";
+
 
 
 
@@ -195,6 +191,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
           ),
           label: "Verified Sites",
           route: "/verified-websites",
+        },
+        {
+          icon: (
+            <PiShoppingCartSimpleBold  className=" text-xl" />
+          ),
+          label: "Press Releases",
+          route: "/press-release",
         },
         {
           icon: (

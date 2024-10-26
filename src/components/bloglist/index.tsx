@@ -22,6 +22,8 @@ export default function FollowingPointerDemo() {
     
     
     const [blogs, setBlogs] = useState<any>();
+    console.log(blogs);
+    
     const [loading, setLoading] = useState<boolean>(false)
 
 

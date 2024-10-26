@@ -82,6 +82,7 @@ const schemaFields: Record<SchemaType, SchemaField[]> = {
     { name: 'name', type: 'text' },
     { name: 'description', type: 'textarea' },
     { name: 'telephone', type: 'text' },
+    { name: 'openingHours', type: 'array', fields: [{ name: 'hours', type: 'text' }] },
     {
       name: 'address',
       type: 'object',
@@ -93,7 +94,6 @@ const schemaFields: Record<SchemaType, SchemaField[]> = {
         { name: 'addressCountry', type: 'text' },
       ],
     },
-    { name: 'openingHours', type: 'array', fields: [{ name: 'hours', type: 'text' }] },
   ],
   Movie: [
     { name: 'name', type: 'text' },
@@ -125,12 +125,51 @@ const schemaFields: Record<SchemaType, SchemaField[]> = {
   ],
   Product: [
     { name: 'name', type: 'text' },
+    { name: 'image', type: 'text' },
     { name: 'description', type: 'textarea' },
     { name: 'brand', type: 'text' },
-    { name: 'offers', type: 'object', fields: [
-      { name: 'price', type: 'text' },
-      { name: 'priceCurrency', type: 'text' },
-    ]},
+    { name: 'sku', type: 'text' },
+    { name: 'mpn', type: 'text' },
+    { name: 'gtin', type: 'text' },
+    { name: 'gtin8', type: 'text' },
+    { name: 'gtin13', type: 'text' },
+    { name: 'gtin14', type: 'text' },
+    { name: 'isbn', type: 'text' },
+    {
+      name: 'review',
+      type: 'array',
+      fields: [
+        { name: 'name', type: 'text' },
+        { name: 'reviewRating', type: 'text' },
+        { name: 'datePublished', type: 'text' },
+        { name: 'reviewBody', type: 'textarea' },
+        { name: 'author', type: 'text' },
+        { name: 'publisher', type: 'text' },
+      ]
+    },
+    {
+      name: 'aggregateRating',
+      type: 'object',
+      fields: [
+        { name: 'ratingValue', type: 'text' },
+        { name: 'reviewCount', type: 'text' },
+        { name: 'bestRating', type: 'text' },
+        { name: 'worstRating', type: 'text' },
+      ]
+    },
+
+    {
+      name: 'offers',
+      type: 'object',
+      fields: [
+        { name: '@type', type: 'text' },
+        { name: 'url', type: 'text' },
+        { name: 'priceCurrency', type: 'text' },
+        { name: 'price', type: 'text' },
+        { name: 'priceValidUntil', type: 'text' },
+        { name: 'availability', type: 'text' },
+      ]
+    },
   ],
   Recipe: [
     { name: 'name', type: 'text' },
@@ -143,6 +182,8 @@ const schemaFields: Record<SchemaType, SchemaField[]> = {
     { name: 'name', type: 'text' },
     { name: 'description', type: 'textarea' },
     { name: 'servesCuisine', type: 'text' },
+    { name: 'telephone', type: 'text' },
+
     {
       name: 'address',
       type: 'object',
@@ -154,7 +195,6 @@ const schemaFields: Record<SchemaType, SchemaField[]> = {
         { name: 'addressCountry', type: 'text' },
       ],
     },
-    { name: 'telephone', type: 'text' },
   ],
   Review: [
     { name: 'itemReviewed', type: 'text' },
@@ -398,9 +438,9 @@ export default function Component() {
       >
         Schema Markup Generator
       </motion.h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="flex gap-8">
         <motion.div
-          className="bg-white p-6 rounded shadow-md"
+          className="bg-white p-6 rounded shadow-md flex-[5]"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -439,6 +479,7 @@ export default function Component() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
+                className='grid grid-cols-2 gap-4'
               >
                 {schemaFields[schemaType].map((field) => renderField(field))}
               </motion.div>
@@ -447,10 +488,11 @@ export default function Component() {
         </motion.div>
 
         <motion.div
-          className="bg-white p-6 rounded shadow-md"
+          className="bg-white p-6 rounded shadow-md w-1/3"
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
+          
         >
           <label className="block text-lg font-semibold mb-4">Generated Schema</label>
           <pre className="bg-gray-100 p-4 rounded mb-4 overflow-x-auto">

@@ -1,9 +1,10 @@
-
-
+import Loader from '@/components/common/Loader';
 import dynamic from 'next/dynamic';
 
 const TaskCreateComponent = dynamic(() => import('../../components/TaskCreate'), {
-  ssr: false
+  ssr: false,
+  loading: () => <Loader/>
+
 });
 
 const Page = () => <TaskCreateComponent />;
